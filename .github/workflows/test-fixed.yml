@@ -25,7 +25,16 @@ jobs:
           paths: "dirty.ipynb"
 
   test-special-chars:
-    name: Special character paths (should pass with fix)
+    name: Special char filename (fixed handles without bash errors)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
+        with:
+          paths: "My Analysis (draft).ipynb"
+
+  test-all:
+    name: All notebooks via glob (fixed handles without bash errors)
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:

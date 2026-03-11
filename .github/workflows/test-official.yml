@@ -25,7 +25,17 @@ jobs:
           paths: "dirty.ipynb"
 
   test-special-chars:
-    name: Special character paths (expected to fail with official)
+    name: Special char filename (official fails with bash syntax error)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v6
+      - uses: kynan/nbstripout@main
+        with:
+          paths: "My Analysis (draft).ipynb"
+
+  test-all:
+    name: All notebooks via glob (official fails with bash syntax error)
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
