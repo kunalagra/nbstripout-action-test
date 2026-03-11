@@ -1,0 +1,34 @@
+name: Test Fixed Action
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test-clean:
+    name: Clean notebook (should pass)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
+        with:
+          paths: "clean.ipynb"
+
+  test-dirty:
+    name: Dirty notebook (should fail)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
+        with:
+          paths: "dirty.ipynb"
+
+  test-special-chars:
+    name: Special character paths (should pass with fix)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
+        with:
+          paths: "**/*.ipynb"
