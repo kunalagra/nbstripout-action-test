@@ -13,7 +13,7 @@ jobs:
       - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
         with:
           paths: |
-            "clean.ipynb"
+            clean.ipynb
 
   test-dirty:
     name: Dirty notebook (should fail)
@@ -24,7 +24,7 @@ jobs:
       - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
         with:
           paths: |
-            "dirty.ipynb"
+            dirty.ipynb
 
   test-special-chars:
     name: Special char filename (fixed handles without bash errors)
@@ -34,7 +34,7 @@ jobs:
       - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
         with:
           paths: |
-            "My Analysis (draft).ipynb"
+            My Analysis (draft).ipynb
 
   test-all:
     name: All notebooks via glob (fixed handles without bash errors)
@@ -45,4 +45,4 @@ jobs:
       - uses: kunalagra/nbstripout@refactor/gh-actions-refactor
         with:
           paths: |
-            "**/*.ipynb"
+            **/*.ipynb
